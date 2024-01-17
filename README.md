@@ -1,7 +1,5 @@
 # BULID-WORDS
 
-# BULID-WORDS
-
 ## Description :
 ### you = "player"
 ### the game chose random letter (6 lettter ) and thr you should creat (build ) words form given letter  , if you complate the task (certian numbeer of words for spicfic time ) you will go to anthor level (meanwhile you will collect coins and diamonds ) if time is up you will lose evreythink :(( .
