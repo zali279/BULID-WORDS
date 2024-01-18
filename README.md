@@ -19,7 +19,6 @@
 
  ## screenshots
 
-![imag](https://camo.githubusercontent.com/28914164154c249fd2a03d7791f207107471f77777597172b33c0c4d468125b9/68747470733a2f2f692e696d6775722e636f6d2f425268704a434e2e706e67)
 
 ## credit
 i git inspire this from Word connect game 
