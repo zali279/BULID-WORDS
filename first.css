@@ -1,0 +1,20 @@
+
+
+h1 {
+    font-family: Cinzel, serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: #5d46b9;
+    text-align: center;
+    
+}
+
+main {
+    align-items: center;
+    margin: 0 auto;
+    height: 530px;
+    width: 900px;
+    border: 1.5px solid black;
+    background-image: url("https://cdn5.vectorstock.com/i/1000x1000/24/74/seamless-alphabet-letters-background-vector-4462474.jpg");
+
+}
