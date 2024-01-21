@@ -323,20 +323,24 @@ const restatGame = () =>{
 }
 
 const winnerResult = () => {
+    let h3remove=document.querySelectorAll('.correctwords')
+    h3remove.forEach((element) => {
+        element.remove()
+    })
+    task.innerText="THE RESUALT"
     if (coins > totaltargettWord *5 && (0.8*finalLevel < diamond < finalLevel)){
-        console.log("1")
-
-    }
+        gameStatues.innerText="Profetional"}
     else if (coins > totaltargettWord *5 && (0.5*finalLevel < diamond < 0.7*finalLevel)){
-        console.log("2")
+        gameStatues.innerText="Expert"
     }
     else if ( coins > totaltargettWord*4 ){
-        console.log("3")
+        gameStatues.innerText="Intermediate"
     }
     else if (totaltargettWord*4 <= coins <= totaltargettWord*3 ){
-        console.log("4")
+        gameStatues.innerText="Elementary"
     }else {
-        console.log("5")
+        gameStatues.innerText="Beginner"
+
     }
 }
 
