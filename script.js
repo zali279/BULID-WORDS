@@ -50,6 +50,7 @@ heart.innerText=heartCounter
 let totaltargettWord =0
 
 const randomLetter = () => {
+
     while (letterArry.length < 6){
         letterIndex=Math.floor(Math.random()*englishLetterArray.length)
         letter = englishLetterArray[letterIndex]
@@ -277,6 +278,7 @@ const wordHint = async () => {
 }
 
 const wordHintSearch =async (hintSearch) => {
+    allLetter=""
     letterArry.forEach((element) => {
         allLetter +=element
     })
