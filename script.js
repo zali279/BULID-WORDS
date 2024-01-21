@@ -14,6 +14,7 @@ const resualtButton = document.querySelector('.resualt')
 const gameStatues  = document.querySelector('.statues')
 const addTime= document.querySelector('.add-time')
 const hintButton = document.querySelector('.hint')
+const hintBymeaningButton = document.querySelector('.hint-by-meaning')
 nextLevelButton.classList.toggle('hide')
 let targetCorrectWord = 2
 let word 
@@ -48,6 +49,8 @@ let finalLevel = 3
 task.innerText=`Complate ${targetCorrectWord} words in ${targetTime} sec`
 heart.innerText=heartCounter
 let totaltargettWord =0
+let hintWordArray = []
+let repateLetter=0
 
 const randomLetter = () => {
 
@@ -89,6 +92,7 @@ const prepareNextLevel = () => {
 const nextLevel = () => {
     wrongWordCounter = 0
     wrongWordArray=[]
+    hintWordArray = []
     heartCounter = 5
     heart.innerText=heartCounter
     let h3remove=document.querySelectorAll('.correctwords')
@@ -185,42 +189,45 @@ const  checkWord  = async () => {
     if (start && !end ){   
         word =input.innerText 
         wordLink = `${englishWordsLink}${word}`
-        console.log(word.length)
-        if (word.length > 1){
-            await fetch(wordLink)
-            .then(response => {
-                if (!response.ok) {
-                    let wrongWord=input.innerText 
-                    if (!wrongWordArray.includes(word)){
-                        gameStatues.innerText='ITS NOT A WORD !!'
-                        wrongWordCounter++
-                        wrongWordArray.push(wrongWord)
-                        heartCounter--
-                        heart.innerText=heartCounter
-                        if(wrongWordArray.length >= 5 )
-                        {
+        for (let i= 1 ; i<word.length ;i++){
+            if (word[i] === word[0]){
+                repateLetter++
+            }
+        }
+        if (word.length === 1) {
+                gameStatues.innerText='ITS A letter !!' 
+            }
+        else if (repateLetter === word.length-1){
+            gameStatues.innerText='YOU ARE JOKING :)'
+        }else {
+            if (word.length > 1){
+                await fetch(wordLink)
+                .then(response => {
+                    if (!response.ok) {
+                        let wrongWord=input.innerText 
+                        if (!wrongWordArray.includes(word)){
+                            gameStatues.innerText='ITS NOT A WORD !!'
+                            wrongWordCounter++
+                            wrongWordArray.push(wrongWord)
+                            heartCounter--
+                            heart.innerText=heartCounter
+                            if(wrongWordArray.length >= 5 ){
                             endLevel()
+                            }
+                        }else {
+                            gameStatues.innerText='ITS NOT A WORD , you try this before :))'
                         }
-                    }else {
-                        gameStatues.innerText='ITS NOT A WORD , you try this before :))'
                     }
-                    console.log(wrongWordArray)
-                    
-                }
-                else {
-                    
-                    
-                    correctWord()
-                    //responseData()
-                }
+                    else {
+                        correctWord()
+                    }
                 })
                 
-        }else if (word.length === 1) {
-            gameStatues.innerText='ITS A letter !!' 
-        }else {
+            }else {
             gameStatues.innerText='ITS  empty !!'
+            }
         }
-    }
+    repateLetter=0}
 }
 
 const responseData = async () => {
@@ -282,14 +289,31 @@ const wordHintSearch =async (hintSearch) => {
     letterArry.forEach((element) => {
         allLetter +=element
     })
-let hintLink=`https://api.datamuse.com/words?sp=[${allLetter}]{3}&max`
+let hintLink=`https://api.datamuse.com/words?sp=[${allLetter}]{4}&max`
 let response = await axios.get (hintLink)
 hintWord = response.data[hintSearch].word
 console.log(hintWord)
 
 }
 
-
+const meaningHint = async () => {
+    
+    hintWordArray.push(...correctWordArray)
+    if (coins >= 1 && !end){
+        for (let i=0; i<10;i++){
+            await wordHintSearch(i)
+            if (!hintWordArray.includes(hintWord)){
+                coins-=1
+                coinsDiv.innerText=coins
+                break ;
+            }
+        }hintWordArray.push(hintWord)
+        wordLink = `${englishWordsLink}${hintWord}`
+        let responseData =  await axios.get(wordLink)
+        console.log(responseData.data[0].meanings[0].definitions[0].definition)
+        gameStatues.innerText=responseData.data[0].meanings[0].definitions[0].definition
+    }
+}
 
 
 const restatGame = () =>{
@@ -361,5 +385,16 @@ clearButton.addEventListener('click',clearLastLetter)
 addTime.addEventListener('click' ,addTimeDiamond)
 restartButton.addEventListener('click',restatGame)
 hintButton.addEventListener('click',wordHint)
-
+hintBymeaningButton.addEventListener('click',meaningHint)
 resualtButton.addEventListener('click',winnerResult)
+
+
+/*
+for (let i= 1 ; i<word.length ;i++){
+    if (word[i] === word[0]){
+        repateLetter++
+    }
+    }
+if (repateLetter === word.length){
+
+}*/

@@ -7,9 +7,6 @@ h1{
         font-size: 36px;
         font-weight: bold;
         color: #a681e6;
-
-      
-
 }
 .letter {
     border: 2px solid black ;
@@ -116,39 +113,3 @@ main {
 .resualt {
  opacity: 0;
 }
-/*
-       /*
-    grid-template-columns: 1fr 2fr 1fr  2fr 1fr  2fr 1fr  ;
-    grid-template-rows :1fr 2fr 2fr  2fr 1fr   ;
-    
-    grid-template-columns: 1fr 5fr 1fr  ;
-    grid-template-rows :1fr 4fr 1fr  ;
-
-
-/*
-#0 {
-    grid-area: 2/2 /3/3;
-    border: 2px solid brown;
-    
-}
-
-#1 {
-    grid-area: 2/4 /3/5;
-}
-
-#2 {
-    grid-area: 2/6 /3/7;
-}
-
-
-#3 {
-    grid-area: 4/2 /5/3;
-}
-
-#4 {
-    grid-area: 4/4 /5/5;
-}
-#5 {
-    grid-area: 4/6 /5/7;
-}
-*/
