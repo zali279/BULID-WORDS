@@ -4,7 +4,7 @@ const input = document.querySelector(".word")
 const lettersDiv =document.querySelectorAll(".letter") 
 const clearButton = document.querySelector("#clear")
 const clearAllButton =document.querySelector("#allclear")
-const correctWordList= document.querySelector(".correct")
+const correctWordList= document.querySelector("#correct")
 const startButton = document.querySelector(".start")
 const timer = document.querySelector(".timer")
 const heart = document.querySelector(".heart")
@@ -51,7 +51,8 @@ heart.innerText=heartCounter
 let totaltargettWord =0
 let hintWordArray = []
 let repateLetter=0
-
+let z=1
+let finalHintWord
 const randomLetter = () => {
 
     while (letterArry.length < 6){
@@ -260,16 +261,17 @@ const addTimeDiamond = () => {
 const wordHint = async () => {
     //console.log(coins >= 5 && !end)
     if (coins >= 5 && !end){
-        for (let i=0; i<10;i++){
+        for (let i=0; i<100;i++){
             await wordHintSearch(i)
-            if (!correctWordArray.includes(hintWord)){
-                correctWordArray.push(hintWord)
+            if (!correctWordArray.includes(finalHintWord)){
+                correctWordArray.push(finalHintWord)
+                console.log(finalHintWord)
                 coins-=5
                 coinsDiv.innerText=coins
                 let newh3 = document.createElement('h3')
                 newh3.setAttribute('class','correctwords')
                 correctWordList.appendChild(newh3)
-                newh3.innerText=hintWord
+                newh3.innerText=finalHintWord
                 gameStatues.innerText="Hint word"
                 if (correctWordArray.length === targetCorrectWord){
                     win=true
@@ -289,11 +291,29 @@ const wordHintSearch =async (hintSearch) => {
     letterArry.forEach((element) => {
         allLetter +=element
     })
-let hintLink=`https://api.datamuse.com/words?sp=[${allLetter}]{4}&max`
-let response = await axios.get (hintLink)
-hintWord = response.data[hintSearch].word
-console.log(hintWord)
+    let hintLink=`https://api.datamuse.com/words?sp=[${allLetter}]{3}&max`
+    let response = await axios.get (hintLink)
 
+    
+    hintWord = response.data[hintSearch].word
+    console.log("HintSearch" ,hintWord)
+    await doubleCheakHint()
+}
+const doubleCheakHint = async () => {
+    wordLink = `${englishWordsLink}${hintWord}`
+    console.log("hint word check:",hintWord)
+    await fetch(wordLink)
+                .then(response => {
+                    if (!response.ok) {
+                        wordHintSearch(z)
+                        z++
+                        }
+                    else {
+                        word=hintWord
+                        finalHintWord = hintWord
+                        console.log("correct hint word",finalHintWord)
+                    }
+                })
 }
 
 const meaningHint = async () => {
