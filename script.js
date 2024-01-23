@@ -305,6 +305,12 @@ const wordHint = async () => {
         for (let i=0; i<100;i++){
             await wordHintSearch(i)
             if (!correctWordArray.includes(finalHintWord) && finalHintWord){
+                for (let i= 1 ; i<word.length ;i++){
+                    if (word[i] === word[0]){
+                        repateLetter++
+                    }
+                }
+                if (repateLetter !== finalHintWord.length-1){
                 correctWordArray.push(finalHintWord)
                 coins-=5
                 coinsDiv.innerText=coins
@@ -321,8 +327,9 @@ const wordHint = async () => {
                     endLevel()
                 }
                 break ;
+                }
+                repateLetter=0
             }
-            
         }
     }
 }

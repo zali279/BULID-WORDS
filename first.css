@@ -4,17 +4,55 @@ h1 {
     font-family: Cinzel, serif;
     font-size: 36px;
     font-weight: bold;
-    color: #5d46b9;
+    color:#8F5476;
     text-align: center;
-    
 }
 
 main {
     align-items: center;
+    text-align: center;
     margin: 0 auto;
     height: 530px;
     width: 900px;
     border: 1.5px solid black;
-    background-image: url("https://cdn5.vectorstock.com/i/1000x1000/24/74/seamless-alphabet-letters-background-vector-4462474.jpg");
-
+    font-family: Verdana, sans-serif;
+    
 }
+
+
+h2 {
+    color :#D99F7E;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 35px;
+    text-align: center;
+    margin: 0 auto;
+   }
+
+  h3 {
+    color:#F2D5C4
+  }
+
+  
+   li {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #D95959;
+  }
+
+
+  button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #8F5476;
+    color: #F2D5C4;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    margin-top:10px ;
+  }
+  
