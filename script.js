@@ -14,7 +14,8 @@ const input = document.querySelector(".word")
 //letters
 const lettersDiv =document.querySelectorAll(".letter") 
 let letterArry = []
-let englishLetterArray =['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+let englishLetterArray =['b', 'c', 'd', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't',  'v', 'w', 'x', 'y', 'z']
+let vowel = ['a','o','e','i','u']
 let allLetter =""
 //let letterDiv 
 
@@ -94,13 +95,21 @@ for (let i =0;i<heartCounter; i++){
 
 
 const randomLetter = () => {
-    while (letterArry.length < 6){
+    while (letterArry.length < 4){
         letterIndex=Math.floor(Math.random()*englishLetterArray.length)
         letter = englishLetterArray[letterIndex]
         if (!letterArry.includes(letter)){
             letterArry.push(letter)
         }
     }
+    while((letterArry.length < 6)){
+        letterIndex=Math.floor(Math.random()*vowel.length)
+        letter = vowel[letterIndex]
+        if (!letterArry.includes(letter)){
+            letterArry.push(letter)
+        }
+    }
+
     for (let i =0 ; i<letterArry.length;i++){
         letterDiv =document.getElementById(i)
         letterDiv.innerText = letterArry[i]
