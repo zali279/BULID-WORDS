@@ -29,19 +29,13 @@
 ##### TIME++ : By spending one diamond, the player receives an additional 10 seconds 
 
 
-
-
-
-
 ***
-### *How to Get Started ?* 
+### Game Resualt : 
+
+##### depand on diamont and coins score the player level will indicate 
+##### (Beginner, Elementary,Intermediate,Expert,Profetional)
 
 
 
- ## screenshots
 
-
-## credit
-
-i git inspire this from Word connect game 
 
