@@ -1,21 +1,38 @@
 const englishWordsLink="https://api.dictionaryapi.dev/api/v2/entries/en/"
+
+//game button :
 const submitButton = document.querySelector(".submit")
-const input = document.querySelector(".word")
-const lettersDiv =document.querySelectorAll(".letter") 
 const clearButton = document.querySelector("#clear")
 const clearAllButton =document.querySelector("#allclear")
-const correctWordList= document.querySelector("#correct")
+//the playe enter word (by click):
+const input = document.querySelector(".word")
+
+//letters
+const lettersDiv =document.querySelectorAll(".letter") 
+
+//main game button (start / next /restat)
 const startButton = document.querySelector(".start")
-const timer = document.querySelector(".timer")
-const heart = document.querySelector(".heart")
 const nextLevelButton = document.querySelector('.next')
 const restartButton = document.querySelector('.restart')
-const resualtButton = document.querySelector('.resualt')
-const gameStatues  = document.querySelector('.statues')
+nextLevelButton.classList.toggle('hide')
+
+//help button (addtimer / hint word / hint meaning)
 const addTime= document.querySelector('.add-time')
 const hintButton = document.querySelector('.hint')
 const hintBymeaningButton = document.querySelector('.hint-by-meaning')
-nextLevelButton.classList.toggle('hide')
+
+//correct word 
+const correctWordList= document.querySelector("#correct")
+
+//game live and timer 
+const timer = document.querySelector(".timer")
+const heart = document.querySelector(".heart")
+
+//game resualt
+const resualtButton = document.querySelector('.resualt')
+const gameStatues  = document.querySelector('.statues')
+
+
 let targetCorrectWord = 2
 let word 
 let wordLink 
@@ -64,7 +81,7 @@ console.log(i)
 let totaltargettWord =0
 let hintWordArray = []
 let repateLetter=0
-let z=1
+let hintItration=1
 let finalHintWord
 const meaningfooter =document.querySelector(".meaning")
 //console.log(meaning)
@@ -334,8 +351,8 @@ const doubleCheakHint = async () => {
     await fetch(wordLink)
                 .then(response => {
                     if (!response.ok) {
-                        wordHintSearch(z)
-                        z++
+                        wordHintSearch(hintItration)
+                        hintItration++
                         }
                     else {
                         word=hintWord

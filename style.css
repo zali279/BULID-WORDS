@@ -20,7 +20,7 @@ h1{
 }
 
 .hide {
-    opacity: 0;
+    display: none;
 }
 
 main {
@@ -255,7 +255,6 @@ padding: 0px 0 7px 5px;
       }
       
       .next {
-        display: inline-block;
         padding: 12px 24px;
         background-color: #b733b3;
         color: #ffffff;
