@@ -59,18 +59,17 @@ for (let i =0;i<heartCounter; i++){
 heart.appendChild(heartIcon)
 console.log(i)
 }
-let lastChild = heart.lastChild
-heart.removeChild(lastChild)
+
 
 let totaltargettWord =0
 let hintWordArray = []
 let repateLetter=0
 let z=1
 let finalHintWord
-const randomLetter = () => {
-const meaning =document.querySelector(".meaning")
-console.log(meaning)
+const meaningfooter =document.querySelector(".meaning")
+//console.log(meaning)
 
+const randomLetter = () => {
     while (letterArry.length < 6){
         letterIndex=Math.floor(Math.random()*englishLetterArray.length)
         letter = englishLetterArray[letterIndex]
@@ -113,14 +112,15 @@ const nextLevel = () => {
     hintWordArray = []
     heartCounter = 5
     //heart.innerText=heartCounter
-    
+    /*
     for (let i =0;i<heartCounter; i++){
         let heartIcon=document.createElement('i')
         heartIcon.className="fa fa-heart"
        //heart.innerText=heartCounter
         heart.appendChild(heartIcon)
         console.log(i)
-}
+    }
+    */
     let h3remove=document.querySelectorAll('.correctwords')
     h3remove.forEach((element) => {
         element.remove()
@@ -163,7 +163,7 @@ const endLevel = () => {
     }
     else {
         timer.innerText="loser"
-        task.innerText="you fininsh your trail :( !! "
+        task.innerText="you fininsh your Live :( !! "
         gameStatues.innerText="play agin !"
         }
 }
@@ -238,7 +238,7 @@ const  checkWord  = async () => {
                             heartCounter--
                             let lastChild = heart.lastChild
                             heart.removeChild(lastChild) 
-                            heart.innerText=heartCounter
+                            //heart.innerText=heartCounter
                             if(wrongWordArray.length >= 5 ){
                             endLevel()
                             }
@@ -374,7 +374,7 @@ const meaningHint = async () => {
                 wordLink = `${englishWordsLink}${hintWord}`
                 let responseData =  await axios.get(wordLink)
                 console.log(responseData.data[0].meanings[0].definitions[0].definition)
-                gameStatues.innerText=responseData.data[0].meanings[0].definitions[0].definition
+                meaningfooter.innerText=responseData.data[0].meanings[0].definitions[0].definition
                 if (correctWordArray.length === targetCorrectWord){
                     win=true
                     end=true
