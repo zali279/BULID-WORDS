@@ -6,12 +6,31 @@
 
 ***
 ### *Description* 
-### General :
-##### The game generat random letters (6 lettter ), and player should build words form givin letters .to Go to nwxt level 
 
-##### the game chose random letter (6 lettter ) and thr you should creat (build ) words form given letter  , if you complate the task (certian numbeer of words for spicfic time ) you will go to anthor level (meanwhile you will collect coins and diamonds ) if time is up you will lose evreythink :(( .
-##### you can use the coin for hint (give suggetion word )
-##### you can use the diamond to add for you more time !! "save it for High Level " 
+### General :
+##### The game generat random letters (6 lettter ), and player should build words form givin letters , to Go to next level .
+
+##### Each level has to do task : target word in spicfic time .
+
+##### Game have #level , Throughout the levels, the player's time will decrease and the number of target words will increase. 
+
+***
+### Score: 
+
+##### Based on the number of letters in the word, the player collects COINS.
+
+##### When a player completes a task before half time, player receives a diamond.
+
+***
+### Advance help: 
+
+##### A hint is provided by 5 coins to the player (one word )
+
+##### TIME++ : By spending one diamond, the player receives an additional 10 seconds 
+
+
+
+
 
 
 ***

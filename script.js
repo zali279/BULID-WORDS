@@ -137,8 +137,6 @@ const prepareNextLevel = () => {
 } 
 
 const nextLevel = () => {
-    
-
     nextLevelButton.classList.toggle('hide')
     level++
     initialize()
@@ -153,14 +151,14 @@ const endLevel = () => {
     input.innerText=""
     if (win){
         timer.innerText="YOU win !"
-        nextLevelButton.classList.toggle('hide')
+        nextLevelButton.classList.remove('hide')
         gameStatues.innerText="winner"
         if (remainTime >= targetTime/2){
             diamond++
             diamondDiv.innerText=diamond
         }
         if (level ===finalLevel){
-            nextLevelButton.style.opacity=0
+            nextLevelButton.classList.add('hide')
             resualtButton.style.opacity=1
         }
         prepareNextLevel()
@@ -371,18 +369,19 @@ const meaningHint = async () => {
 
 const restatGame = () =>{
     clearInterval(time)
-    startButton.style.opacity = 1
+    nextLevelButton.classList.add('hide')
+    startButton.style.opacity =1
+    resualtButton.style.opacity=0
     level=1
     start=0 
     targetCorrectWord = 2
     targetTime = 80
     t=targetTime
-    coins=0
+    coins=30
     diamond=0
     diamondDiv.innerText=diamond
     coinsDiv.innerText=coins
     timer.innerText=""
-    nextLevelButton.style.opacity=0
     lettersDiv.forEach((element) => {
         element.innerText = ""
     })
