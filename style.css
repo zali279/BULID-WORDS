@@ -12,8 +12,9 @@ h1{
     border: 2px solid black ;
     cursor: pointer;
     height: 100px;
-    width: 30%;
+    width: 155px;
     margin : 7px;
+    
 
 
 }
@@ -27,6 +28,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 3fr ;
     grid-template-rows :1fr 1.5fr 1.5fr 0.5fr 0.5fr ;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     /*grid-template-rows :1fr 1.5fr 1.5fr 1fr ;*/
 
@@ -42,30 +44,43 @@ main {
     grid-area : 1  / 1 / 2/ 2;
     margin-top: 30px;
     margin-left: 30px ;
+    font-size: 30px;
 
 }
 #heart{
     grid-area : 1  / 2 / 2/ 3;
     margin-top: 30px;
     margin-left: 30px ;
+    color: red;
 }
 #level {
     grid-area : 1  / 3 / 2/ 4;
 
+    
+    margin:  auto;
     margin-top: 30px;
-    margin-left: 60px ;
-
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
 }
 
-
+.level {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    margin-top: 20px;
+    margin-left: 15px;
+}
 .coins-score {
     grid-area : 1  / 4 / 2/ 5;
-    margin-top: 20px;
+    margin:  auto;
+    margin-top: 30px;
 
 }
 .diamond-score {
     grid-area : 1  / 5 / 2/ 6;
-    margin-top: 20px;
+    margin:  auto;
+    margin-top: 30px;
 }
 #task {
     grid-area : 1  / 6 / 2/ 7;
@@ -87,7 +102,7 @@ main {
 
 .button {
     grid-area : 4  / 2 / 5/ 7;
-    margin-top: -10px;
+    padding-top: 10px;
 
 }
 
@@ -118,6 +133,7 @@ footer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 
 }
 .resualt {
@@ -132,10 +148,21 @@ padding: 0px 0 7px 5px;
 
 [id = "0"],[id = "1"],[id = "2"],[id = "3"],[id = "4"],[id = "5"] {
     font-size: 83px;
-    color: palevioletred; 
+    color: palevioletred;
+    padding-left : 57px;
+    padding-bottom: 130px;
+    box-sizing: border-box; 
 
 }
+/*
+[id = "0"]{
+   
+    width: 155px;
+   padding-left: 20px;
+   box-sizing: border-box;
 
+}
+*/
 #correct {
     display: flex;
     flex-direction: row;
@@ -148,3 +175,139 @@ padding: 0px 0 7px 5px;
     color: rgb(112, 174, 216); 
     margin-left: 20px ;
 }
+
+
+.start  {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .heart{
+        font-size: 10px;
+      }
+
+
+      .add-time {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #337ab7;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+      }
+      .hint {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #f0ad4e;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+      }
+
+
+    .submit{
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #bd48ae;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+      }
+       
+      #clear {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #d94c48;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        }
+
+    #allclear {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #0e0e0e;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+      }
+      
+      .next {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #b733b3;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 20px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .restart {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #d9534f;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+      }
+
+    .timer {
+        font-size: 24px;
+        font-family: Arial, sans-serif;
+        font-style: italic;
+        margin-top: 0;
+      }
+
+      .coins-score {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffd700;
+      }
+      .diamond-score {
+        font-size: 18px;
+        font-weight: bold;
+        color: #00a8e8;
+      }
+      .coins , .diamond{
+        margin-top: 20px;
+        margin-left: 20px;
+      }
+
+    
+      /*
+      .start-button:hover {
+        background-color: #45a049;
+      }
+      
+      .start-button:active {
+        background-color: #3e8e41;
+      }
+}
+*/

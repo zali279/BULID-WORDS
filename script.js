@@ -42,18 +42,34 @@ let hintWord
 let englishLetterArray =['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 let allLetter =""
 let wrongWordCounter = 0
-let heartCounter = 5
+
 let wrongWordArray=[]
 let finalLevel = 3
 //let hintSearch =0
 task.innerText=`Complate ${targetCorrectWord} words in ${targetTime} sec`
-heart.innerText=heartCounter
+//let heartIcon=document.createElement('i')
+//heartIcon.className="fa fa-heart"
+//heartIcon.setAttribute('class' ,"fa fa-heart")
+let heartCounter = 5
+
+for (let i =0;i<heartCounter; i++){
+    let heartIcon=document.createElement('i')
+    heartIcon.className="fa fa-heart"
+//heart.innerText=heartCounter
+heart.appendChild(heartIcon)
+console.log(i)
+}
+let lastChild = heart.lastChild
+heart.removeChild(lastChild)
+
 let totaltargettWord =0
 let hintWordArray = []
 let repateLetter=0
 let z=1
 let finalHintWord
 const randomLetter = () => {
+const meaning =document.querySelector(".meaning")
+console.log(meaning)
 
     while (letterArry.length < 6){
         letterIndex=Math.floor(Math.random()*englishLetterArray.length)
@@ -96,7 +112,15 @@ const nextLevel = () => {
     wrongWordArray=[]
     hintWordArray = []
     heartCounter = 5
-    heart.innerText=heartCounter
+    //heart.innerText=heartCounter
+    
+    for (let i =0;i<heartCounter; i++){
+        let heartIcon=document.createElement('i')
+        heartIcon.className="fa fa-heart"
+       //heart.innerText=heartCounter
+        heart.appendChild(heartIcon)
+        console.log(i)
+}
     let h3remove=document.querySelectorAll('.correctwords')
     h3remove.forEach((element) => {
         element.remove()
@@ -212,6 +236,8 @@ const  checkWord  = async () => {
                             wrongWordCounter++
                             wrongWordArray.push(wrongWord)
                             heartCounter--
+                            let lastChild = heart.lastChild
+                            heart.removeChild(lastChild) 
                             heart.innerText=heartCounter
                             if(wrongWordArray.length >= 5 ){
                             endLevel()

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="script.js"></script>
     <title>Document</title>
@@ -14,11 +15,11 @@
         <h1>BUILD WORDS!!</h1>
     </header>
     <main>
-    <div id="timer">Timer 
+    <div id="timer"> <i class="fa fa-clock-o"></i>
         <h2 class="timer"></h2>
     </div>
     <div id="heart">Heart 
-        <h2 class="heart"></h2>
+        <h2 class="heart"> </h2>
     </div>
     
     <div id="level">Level 
@@ -37,8 +38,8 @@
     <section class="gamebutton">
     <div id="emptyBox" type="word" class="word"></div>
     <button class="submit">submit</button>
-    <button id="clear">del</button>
-    <button id="allclear">CLEAR</button>
+    <button id="clear"><i class="fa fa-arrow-left" aria-hidden="true"></i> del </button>
+    <button id="allclear"><i class="fa fa-times-circle" aria-hidden="true"></i>  CLEAR</button>
     </section>
     </section>
 
@@ -71,15 +72,16 @@
     </div>
     
     <section class ="button">
-    <button class="start">Start</button>
-    <button class="add-time">TIME++</button>
+    <button class="start" >Start</button>
+    <button class="add-time"><i class="fa fa-clock-o"></i> +10</button>
     <button class="hint">HINT</button>
     <button class="hint-by-meaning">MEANING</button>
-    <button class="next">Next Level</button>
-    <button class="restart">Restart The Game</button>
+    <button class="next">Next Level <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+    <button class="restart">Restart The Game <i class="fa fa-retweet" aria-hidden="true"></i></button>
     <button class="resualt">Resualt</button>
     </section>
-    <footer class="timer-icon">hi</footer>
+    <footer class="meaning"></footer>
 </main>
 </body>
 </html>
+
