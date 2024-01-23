@@ -137,23 +137,11 @@ const prepareNextLevel = () => {
 } 
 
 const nextLevel = () => {
-    finalHintWord=false
-    wrongWordCounter = 0
-    wrongWordArray=[]
-    hintWordArray = []
-    heartCounter = 5
-    let h3remove=document.querySelectorAll('.correctwords')
-    h3remove.forEach((element) => {
-        element.remove()
-        })
-    task.innerText=`Complate ${targetCorrectWord} words in ${targetTime} sec`
+    
+
     nextLevelButton.classList.toggle('hide')
     level++
-    levelDiv.innerText=level
-    gameStatues.innerText=""
-    end = false 
-    win =false
-    letterArry=[]
+    initialize()
     randomLetter()
     timerStart()
 }
@@ -383,33 +371,50 @@ const meaningHint = async () => {
 
 const restatGame = () =>{
     clearInterval(time)
-    end = false
-    win = false 
     startButton.style.opacity = 1
     level=1
     start=0 
     targetCorrectWord = 2
-    targetTime = 160
+    targetTime = 80
+    t=targetTime
     coins=0
     diamond=0
     diamondDiv.innerText=diamond
     coinsDiv.innerText=coins
-    t=targetTime
-    correctWordArray=[]
-    input.innerText=""
-    diamondDiv.innerText=diamond
-    coinsDiv.innerText=coins
     timer.innerText=""
+    nextLevelButton.style.opacity=0
+    lettersDiv.forEach((element) => {
+        element.innerText = ""
+    })
+    initialize()
+    
+}
+
+const initialize = () => {
+
+    levelDiv.innerText=level
+    finalHintWord=false
+    wrongWordCounter = 0
+    end = false
+    win = false 
+    correctWordArray=[]
+    wrongWordArray=[]
+    hintWordArray = []
+    letterArry=[]
+    input.innerText=""
     gameStatues.innerText=""
     let h3remove=document.querySelectorAll('.correctwords')
     h3remove.forEach((element) => {
         element.remove()
     })
     task.innerText=`Complate ${targetCorrectWord} words in ${targetTime} sec`
-    nextLevelButton.style.opacity=0
-    lettersDiv.forEach((element) => {
-        element.innerText = ""
-    })
+    heartCounter=5
+    heart.innerHTML=""
+    for (let i =0;i<heartCounter; i++){
+        let heartIcon=document.createElement('i')
+        heartIcon.className="fa fa-heart"
+        heart.appendChild(heartIcon)
+    }
 }
 
 const winnerResult = () => {
