@@ -118,8 +118,12 @@ main {
 }
 
 footer {
-    grid-area : 5  / 2 / 6/ 7;
+    grid-area : 5  / 2 / 6/ 6;
 }
+
+
+
+
 
 #emptyBox {
     border: 1px solid black;
@@ -266,6 +270,7 @@ padding: 0px 0 7px 5px;
       }
 
       .restart {
+        width: 75%;
         display: inline-block;
         padding: 10px 20px;
         background-color: #d9534f;
@@ -275,6 +280,8 @@ padding: 0px 0 7px 5px;
         border-radius: 4px;
         border: none;
         cursor: pointer;
+        grid-area : 5  / 6 / 6/7;
+        
       }
 
     .timer {

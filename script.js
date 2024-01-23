@@ -1,4 +1,8 @@
+///////////GLOBEL VARIBLE ////////////////////////////////////////
+//API
 const englishWordsLink="https://api.dictionaryapi.dev/api/v2/entries/en/"
+let word 
+let wordLink 
 
 //game button :
 const submitButton = document.querySelector(".submit")
@@ -9,6 +13,10 @@ const input = document.querySelector(".word")
 
 //letters
 const lettersDiv =document.querySelectorAll(".letter") 
+let letterArry = []
+let englishLetterArray =['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+let allLetter =""
+//let letterDiv 
 
 //main game button (start / next /restat)
 const startButton = document.querySelector(".start")
@@ -21,6 +29,12 @@ const addTime= document.querySelector('.add-time')
 const hintButton = document.querySelector('.hint')
 const hintBymeaningButton = document.querySelector('.hint-by-meaning')
 
+//for hint function 
+let hintWordArray = []
+let hintItration=1
+let finalHintWord
+const meaningfooter =document.querySelector(".meaning")
+
 //correct word 
 const correctWordList= document.querySelector("#correct")
 
@@ -30,61 +44,54 @@ const heart = document.querySelector(".heart")
 
 //game resualt
 const resualtButton = document.querySelector('.resualt')
-const gameStatues  = document.querySelector('.statues')
 
-
+//design  game 
 let targetCorrectWord = 2
-let word 
-let wordLink 
-let correctWordArray=[]
+let targetTime = 80
+let t=targetTime
+let levelDiv = document.querySelector('.level')
+
+let finalLevel = 3
+
+//score + level 
 let coinsDiv =document.querySelector(".coins")
 let diamondDiv=document.querySelector(".diamond")
-let levelDiv = document.querySelector('.level')
-let task =document.querySelector('.task')
-let level=1
 let coins=30
 let diamond=0
 diamondDiv.innerText=diamond
 coinsDiv.innerText=coins
+
+//to do during the game 
+let correctWordArray=[]
+const gameStatues  = document.querySelector('.statues')
+let task =document.querySelector('.task')
+task.innerText=`Complate ${targetCorrectWord} words in ${targetTime} sec`
+
+//initial value
 let time
 let end=false
 let win=false
 let start = 0
-let remainTime
-let targetTime = 80
-let t=targetTime
-let letterArry = []
-let letterDiv 
+let remainTime//to git diamond if fininsh task less than half time 
 let hintWord
-let englishLetterArray =['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-let allLetter =""
 let wrongWordCounter = 0
-
 let wrongWordArray=[]
-let finalLevel = 3
-//let hintSearch =0
-task.innerText=`Complate ${targetCorrectWord} words in ${targetTime} sec`
-//let heartIcon=document.createElement('i')
-//heartIcon.className="fa fa-heart"
-//heartIcon.setAttribute('class' ,"fa fa-heart")
+let repateLetter=0 
+let level=1
 let heartCounter = 5
+let totaltargettWord =0 //for result 
 
+//draw heart icon
 for (let i =0;i<heartCounter; i++){
     let heartIcon=document.createElement('i')
     heartIcon.className="fa fa-heart"
-//heart.innerText=heartCounter
-heart.appendChild(heartIcon)
-console.log(i)
+    heart.appendChild(heartIcon)
 }
 
 
-let totaltargettWord =0
-let hintWordArray = []
-let repateLetter=0
-let hintItration=1
-let finalHintWord
-const meaningfooter =document.querySelector(".meaning")
-//console.log(meaning)
+/////////GAME FUNCTION////////////
+
+
 
 const randomLetter = () => {
     while (letterArry.length < 6){
@@ -102,14 +109,12 @@ const randomLetter = () => {
 
 const prepareNextLevel = () => {
     totaltargettWord+=targetCorrectWord
-    console.log(totaltargettWord)
     targetCorrectWord+=1
         if (targetTime === 60 ){
         t=60
     }else {
         targetTime-=10
         t= targetTime}
-    console.log (level < (finalLevel-1))
     if (level < (finalLevel-1) ){
        task.innerText=`Next level : Complate ${targetCorrectWord} words in ${targetTime} sec`
     }else if (level === finalLevel-1){
@@ -128,16 +133,6 @@ const nextLevel = () => {
     wrongWordArray=[]
     hintWordArray = []
     heartCounter = 5
-    //heart.innerText=heartCounter
-    /*
-    for (let i =0;i<heartCounter; i++){
-        let heartIcon=document.createElement('i')
-        heartIcon.className="fa fa-heart"
-       //heart.innerText=heartCounter
-        heart.appendChild(heartIcon)
-        console.log(i)
-    }
-    */
     let h3remove=document.querySelectorAll('.correctwords')
     h3remove.forEach((element) => {
         element.remove()
@@ -193,11 +188,7 @@ const timerStart = () => {
     }
     time=setInterval(timerCount, 1000)
 }
-/*
-const timeStop = () => {
-    clearInterval(time)
-}
-*/
+
 const timerCount = () => {
     timer.innerText=t
     t--
@@ -275,13 +266,7 @@ const  checkWord  = async () => {
     repateLetter=0}
 }
 
-const responseData = async () => {
-let responseData =  await axios.get(wordLink)
-//console.log(responseData.data[0])
-//console.log(responseData.data[0].meanings[0].definitions[0].definition)
-    //.meaning[0].definitions[0].definition)
-} 
-
+//TO print that player clicked 
 const printLetter = () => {
     if (!end && start){
         let index = parseInt(event.target.getAttribute('id'))
@@ -291,6 +276,10 @@ const printLetter = () => {
 
 const clearLastLetter = () => {
     input.innerText=input.innerText.slice(0,-1)
+}
+
+const clearAllLetter = () => {
+    input.innerText="" 
 }
 
 const addTimeDiamond = () => {
@@ -303,14 +292,11 @@ const addTimeDiamond = () => {
 
 
 const wordHint = async () => {
-    //console.log(coins >= 5 && !end)
     if (coins >= 5 && !end){
         for (let i=0; i<100;i++){
             await wordHintSearch(i)
             if (!correctWordArray.includes(finalHintWord) && finalHintWord){
                 correctWordArray.push(finalHintWord)
-                console.log("final ARRAY" ,correctWordArray )
-                console.log("Final hint wor :",finalHintWord)
                 coins-=5
                 coinsDiv.innerText=coins
                 let newh3 = document.createElement('h3')
@@ -339,15 +325,12 @@ const wordHintSearch =async (hintSearch) => {
     })
     let hintLink=`https://api.datamuse.com/words?sp=[${allLetter}]{3}&max`
     let response = await axios.get (hintLink)
-
-    
     hintWord = response.data[hintSearch].word
-    console.log("HintSearch" ,hintWord)
     await doubleCheakHint()
 }
+
 const doubleCheakHint = async () => {
     wordLink = `${englishWordsLink}${hintWord}`
-    console.log("hint word check:",hintWord)
     await fetch(wordLink)
                 .then(response => {
                     if (!response.ok) {
@@ -357,31 +340,9 @@ const doubleCheakHint = async () => {
                     else {
                         word=hintWord
                         finalHintWord = hintWord
-                        console.log("correct hint word",finalHintWord)
                     }
                 })
 }
-
-/*
-const meaningHint = async () => {
-
-    hintWordArray.push(...correctWordArray)
-    if (coins >= 1 && !end){
-        for (let i=0; i<10;i++){
-            await wordHintSearch(i)
-            if (!hintWordArray.includes(hintWord)){
-                coins-=1
-                coinsDiv.innerText=coins
-                break ;
-            }
-        }hintWordArray.push(hintWord)
-        wordLink = `${englishWordsLink}${hintWord}`
-        let responseData =  await axios.get(wordLink)
-        console.log(responseData.data[0].meanings[0].definitions[0].definition)
-        gameStatues.innerText=responseData.data[0].meanings[0].definitions[0].definition
-    }
-}
-*/
 
 const meaningHint = async () => {
     if (coins >= 5 && !end){
@@ -390,7 +351,6 @@ const meaningHint = async () => {
             if (!correctWordArray.includes(finalHintWord) && finalHintWord){
                 wordLink = `${englishWordsLink}${hintWord}`
                 let responseData =  await axios.get(wordLink)
-                console.log(responseData.data[0].meanings[0].definitions[0].definition)
                 meaningfooter.innerText=responseData.data[0].meanings[0].definitions[0].definition
                 if (correctWordArray.length === targetCorrectWord){
                     win=true
@@ -426,7 +386,6 @@ const restatGame = () =>{
     timer.innerText=""
     gameStatues.innerText=""
     let h3remove=document.querySelectorAll('.correctwords')
-    console.log(h3remove)
     h3remove.forEach((element) => {
         element.remove()
     })
@@ -460,13 +419,13 @@ const winnerResult = () => {
 }
 
 
+
+///////////EVENT LISTENER //////////////////
 lettersDiv.forEach(
     (element) => {
     element.addEventListener('click', printLetter)
 })
-clearAllButton.addEventListener ('click', () => {
-    input.innerText="" 
-})
+clearAllButton.addEventListener ('click', clearAllLetter)
 submitButton.addEventListener('click',checkWord)
 nextLevelButton.addEventListener('click' , nextLevel)
 startButton.addEventListener('click' , timerStart)
@@ -477,13 +436,3 @@ hintButton.addEventListener('click',wordHint)
 hintBymeaningButton.addEventListener('click',meaningHint)
 resualtButton.addEventListener('click',winnerResult)
 
-
-/*
-for (let i= 1 ; i<word.length ;i++){
-    if (word[i] === word[0]){
-        repateLetter++
-    }
-    }
-if (repateLetter === word.length){
-
-}*/
