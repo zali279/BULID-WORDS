@@ -8,7 +8,7 @@
 ## *Description* 
 
 ### General :
-##### The game generat random letters (6 lettter ), and player should build words form givin letters , to Go to next level (there are 10 levels)
+##### The game generat random letters (6 lettter ), and player should build words form givin letters , to Go to next level .
 
 ##### Each level has to do task : target word in spicfic time .
 
@@ -16,7 +16,7 @@
 
 ##### Also in each level you will have (5 "heart / live" ) , So be carfull not to write wrong word 
 
-#### The main game page :
+##### The main game page :
 <img src=mainGamePage.png  width=50%>
 
 ***
@@ -45,12 +45,12 @@
 <img src=resualt.png  width=60%> 
 
 ***
-## HOW to start ?
-#### in main page you have the instraction ,by click in (START THE GAME) Button it will take you to The main game page .
+## HOW To Start ?
+#### In main page you have the instraction ,by click in (START THE GAME) Button it will take you to The main game page .
 #### In the main game page you click on green button to start the game
 <img src=mainPage.png  width=49%> <img src=mainGamePage.png  width=49%> 
 
-## Game link 
+## Game Link 
 #### [BULID-WORD](https://build-words.surge.sh/)
 
 ***

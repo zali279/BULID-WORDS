@@ -59,7 +59,7 @@ let newTarget = targetCorrectWord
 //score + level 
 let coinsDiv =document.querySelector(".coins")
 let diamondDiv=document.querySelector(".diamond")
-let coins=10
+let coins=0
 let diamond=0
 diamondDiv.innerText=diamond
 coinsDiv.innerText=coins
@@ -84,12 +84,21 @@ let level=1
 let heartCounter = 5
 let totaltargettWord =0 //for result 
 
+//sound
+let coinsFalling = new Audio('Coins-falling-sound-effect.mp3')
+let lostSound = new Audio('Lost.mp3')
+let diamondSound = new Audio ('Diamond.mp3')
+let levelUpSound = new Audio ('Level-Up.mp3')
+let winnerSound = new Audio ('Winner.mp3')
+
+
 //draw heart icon
 for (let i =0;i<heartCounter; i++){
     let heartIcon=document.createElement('i')
     heartIcon.className="fa fa-heart"
     heart.appendChild(heartIcon)
 }
+
 
 resualtSection.classList.add("hide")
 /////////GAME FUNCTION////////////
@@ -134,6 +143,7 @@ const prepareNextLevel = () => {
         task.innerText=`The Final  : Complate ${targetCorrectWord} words in ${targetTime} sec`
     }else if (level ==finalLevel) {
         task.innerText=`GO TO THE RESULT 🎉 `
+        winnerSound.play()
     }
 } 
 
@@ -151,6 +161,7 @@ const endLevel = () => {
     correctWordArray=[]
     input.innerText=""
     if (win){
+        levelUpSound.play()
         timer.innerText="win !"
         nextLevelButton.classList.remove('hide')
         gameStatues.innerText="winner 😁💪"
@@ -165,11 +176,13 @@ const endLevel = () => {
         prepareNextLevel()
     } 
     else if (t <= 0) {
+        lostSound.play()
         timer.innerText="time is up !  "
         task.innerText="Task not complated , play agin !"
         gameStatues.innerText="LOSER 😔"
     }
     else {
+        lostSound.play()
         timer.innerText="💔"
         task.innerText="you fininsh your Live 😔 !! "
         gameStatues.innerText="play agin 🔃"
@@ -279,6 +292,7 @@ const clearAllLetter = () => {
 
 const addTimeDiamond = () => {
     if (diamond >0  && !end){
+        diamondSound.play()
         t+=10
         diamond--
         diamondDiv.innerText=diamond
@@ -298,6 +312,7 @@ const wordHint = async () => {
                 }
                 if (repateLetter !== finalHintWord.length-1){
                 correctWordArray.push(finalHintWord)
+                coinsFalling.play()
                 coins-=5
                 coinsDiv.innerText=coins
                 let newh3 = document.createElement('h3')
@@ -425,7 +440,9 @@ const winnerResult = () => {
     })
     resualtSection.classList.remove("hide")
     task.innerText="THE RESUALT"
-    if (coins > totaltargettWord *5 && (0.8*finalLevel < diamond < finalLevel)){
+
+
+    if (coins > totaltargettWord*5 && (0.8*finalLevel < diamond < finalLevel)){
         resualtSection.innerText="YOU ARE A PROFESSIONAL ⭐⭐⭐⭐⭐"
         }
     else if (coins > totaltargettWord *5 && (0.5*finalLevel < diamond < 0.7*finalLevel)){
@@ -444,6 +461,7 @@ const winnerResult = () => {
     const reduseTargerWord = () => {
         if (coins >= 5  && !end){
         correctWordArray.push("")
+        coinsFalling.play()
         coins-=5
         coinsDiv.innerText=coins
         newTarget--
