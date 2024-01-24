@@ -28,7 +28,7 @@ nextLevelButton.classList.toggle('hide')
 //help button (addtimer / hint word / hint meaning)
 const addTime= document.querySelector('.add-time')
 const hintButton = document.querySelector('.hint')
-const hintBymeaningButton = document.querySelector('.hint-by-meaning')
+const reduseTargetButton = document.querySelector('.reduse-target')
 
 //for hint function 
 let hintWordArray = []
@@ -44,7 +44,8 @@ const timer = document.querySelector(".timer")
 const heart = document.querySelector(".heart")
 
 //game resualt
-const resualtButton = document.querySelector('.resualt')
+const resualtButton = document.querySelector('.resualt-button')
+const resualtSection = document.querySelector('.resualt')
 
 //design  game 
 let targetCorrectWord = 2
@@ -57,7 +58,7 @@ let finalLevel = 3
 //score + level 
 let coinsDiv =document.querySelector(".coins")
 let diamondDiv=document.querySelector(".diamond")
-let coins=30
+let coins=45
 let diamond=0
 diamondDiv.innerText=diamond
 coinsDiv.innerText=coins
@@ -89,7 +90,7 @@ for (let i =0;i<heartCounter; i++){
     heart.appendChild(heartIcon)
 }
 
-
+resualtSection.classList.add("hide")
 /////////GAME FUNCTION////////////
 
 
@@ -150,7 +151,7 @@ const endLevel = () => {
     correctWordArray=[]
     input.innerText=""
     if (win){
-        timer.innerText="YOU win !"
+        timer.innerText="win !"
         nextLevelButton.classList.remove('hide')
         gameStatues.innerText="winner"
         if (remainTime >= targetTime/2){
@@ -215,6 +216,7 @@ const correctWord = () => {
 }
 
 const  checkWord  = async () => { 
+    console.log(repateLetter)
     if (start && !end ){   
         word =input.innerText 
         wordLink = `${englishWordsLink}${word}`
@@ -369,6 +371,7 @@ const meaningHint = async () => {
 
 const restatGame = () =>{
     clearInterval(time)
+    resualtSection.classList.add("hide")
     nextLevelButton.classList.add('hide')
     startButton.style.opacity =1
     resualtButton.style.opacity=0
@@ -421,23 +424,43 @@ const winnerResult = () => {
     h3remove.forEach((element) => {
         element.remove()
     })
+    resualtSection.classList.remove("hide")
     task.innerText="THE RESUALT"
     if (coins > totaltargettWord *5 && (0.8*finalLevel < diamond < finalLevel)){
-        gameStatues.innerText="Profetional"}
+        gameStatues.innerText="Profetional"
+        resualtSection.innerText="YOU ARE A PROFESSIONAL ⭐⭐⭐⭐⭐"
+        }
     else if (coins > totaltargettWord *5 && (0.5*finalLevel < diamond < 0.7*finalLevel)){
         gameStatues.innerText="Expert"
-    }
+        resualtSection.innerText="You ARE AN EXPERT  ⭐⭐⭐⭐"}
     else if ( coins > totaltargettWord*4 ){
         gameStatues.innerText="Intermediate"
+        resualtSection.innerText="YOU ARE AT THE INTERMEDIATE LEVEL ⭐⭐⭐"
     }
     else if (totaltargettWord*4 <= coins <= totaltargettWord*3 ){
         gameStatues.innerText="Elementary"
+        resualtSection.innerText="YOU ARE AT THE ELEMENTARY LEVEL ⭐⭐"
     }else {
         gameStatues.innerText="Beginner"
+        resualtSection.innerText="YOU ARE A Beginner ⭐"
 
     }
-}
+   }
 
+
+    const reduseTargerWord = () => {
+        correctWordArray.push("")
+        coins-=4
+        coinsDiv.innerText=coins
+        let newTarget = targetCorrectWord-1
+        task.innerText=`Complate ${newTarget} words in ${targetTime} sec`
+        if (correctWordArray.length === targetCorrectWord){
+                win=true
+                end=true
+                remainTime = t
+                endLevel()
+            }
+    } 
 
 
 ///////////EVENT LISTENER //////////////////
@@ -453,6 +476,6 @@ clearButton.addEventListener('click',clearLastLetter)
 addTime.addEventListener('click' ,addTimeDiamond)
 restartButton.addEventListener('click',restatGame)
 hintButton.addEventListener('click',wordHint)
-hintBymeaningButton.addEventListener('click',meaningHint)
+reduseTargetButton.addEventListener('click',reduseTargerWord)
 resualtButton.addEventListener('click',winnerResult)
 
