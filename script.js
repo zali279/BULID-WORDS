@@ -293,8 +293,8 @@ const wordHint = async () => {
         for (let i=0; i<100;i++){
             await wordHintSearch(i)
             if (!correctWordArray.includes(finalHintWord) && finalHintWord){
-                for (let i= 1 ; i<word.length ;i++){
-                    if (word[i] === word[0]){
+                for (let i= 1 ; i<finalHintWord.length ;i++){
+                    if (finalHintWord[i] === finalHintWord[0]){
                         repateLetter++
                     }
                 }
@@ -342,7 +342,7 @@ const doubleCheakHint = async () => {
                         hintItration++
                         }
                     else {
-                        word=hintWord
+                        //word=hintWord
                         finalHintWord = hintWord
                     }
                 })
