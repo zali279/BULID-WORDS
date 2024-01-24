@@ -49,16 +49,15 @@ const resualtSection = document.querySelector('.resualt')
 
 //design  game 
 let targetCorrectWord = 2
-let targetTime = 80
+let targetTime = 120
 let t=targetTime
 let levelDiv = document.querySelector('.level')
-
-let finalLevel = 3
+let finalLevel = 10
 
 //score + level 
 let coinsDiv =document.querySelector(".coins")
 let diamondDiv=document.querySelector(".diamond")
-let coins=45
+let coins=0
 let diamond=0
 diamondDiv.innerText=diamond
 coinsDiv.innerText=coins
@@ -379,9 +378,9 @@ const restatGame = () =>{
     level=1
     start=0 
     targetCorrectWord = 2
-    targetTime = 80
+    targetTime = 120
     t=targetTime
-    coins=30
+    coins=0
     diamond=0
     diamondDiv.innerText=diamond
     coinsDiv.innerText=coins

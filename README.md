@@ -8,7 +8,7 @@
 ### *Description* 
 
 ### General :
-##### The game generat random letters (6 lettter ), and player should build words form givin letters , to Go to next level .
+##### The game generat random letters (6 lettter ), and player should build words form givin letters , to Go to next level (there are 10 levels)
 
 ##### Each level has to do task : target word in spicfic time .
 

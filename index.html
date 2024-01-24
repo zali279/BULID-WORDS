@@ -3,89 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script defer src="script.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="first.css">
 
+    <script defer src="first.js"></script>
+    <title>Document</title>
 </head>
 <body>
     <header>
-        <h1>BUILD WORDS!!</h1>
-    </header>
-    
+    <h1>BUILD WORDS !!</h1>
+</header>
     <main>
-    <div id="timer"> <i class="fa fa-clock-o"></i>
-        <h2 class="timer"></h2>
-    </div>
-    <div id="heart">Heart 
-        <h2 class="heart"> </h2>
-    </div>
+    <h2>How to play ? </h2>
     
-    <div id="level">Level 
-    <h2 class="level">1</h2>
-    </div>
-    
-    <section class="game">
-    <section id ="maindiv"> 
-     <div  id="0" class="letter" ></div>
-     <div id="1" class="letter"></div>
-     <div id="2" class="letter"></div>
-     <div id="3" class="letter"></div>
-     <div id="4" class="letter"></div>
-     <div id="5" class="letter"></div>
-    </section>
-    <section class="gamebutton">
-    <div id="emptyBox" type="word" class="word"></div>
-    <button class="submit">submit</button>
-    <button id="clear"><i class="fa fa-arrow-left" aria-hidden="true"></i> del </button>
-    <button id="allclear"><i class="fa fa-times-circle" aria-hidden="true"></i>  CLEAR</button>
-    </section>
-    </section>
+        <section>
+            <ol class="instruction"><h3>Instruction : </h3>
+                <li>The player is given 6 random letters, which the player must combine to make a word.</li>  
+                <li>In each level there is  a specific task that the player must complete in order to complete the level (#number of words in #spicific time).</li>
+                <li>Throughout the levels, the player's time will decrease and the number of target words will increase.</li>
+            </ol>
 
-    <section class="coins-score">
-    <section class="coins-icon">Coins &#128176;</section>
-    <section class="coins">0</section>
-    </section>
+            <ol class="score"><h3>Score:</h3>
+                <li>Based on the number of letters in the word, the player collects COINS.</li>
+                <li>When a player completes a task before half time, he receives a diamond.</li>
+            </ol>
 
-    <section class="diamond-score">
-    <section>Diamond &#128142; </section>
-    <section class="diamond">0</section>
-     </section>
-
-
-   <!-- <div class="task"></div>--> 
-    <section class="correct"> 
-        <h2>Correct words : </h2>
-        <div id="correct"></div>
-    </section>
-
-    
-
-    <div id="task" >
-        <h2>TASK :</h2>
-        <h3 class="task">Complate 3 word in 60sec</h3>
-    </div>
-    <div id ="statues">
-        <h2>Game Statues</h2>
-        <h3 class="statues"></h3>
-    </div>
-    
-    <section class ="button">
-    <button class="start" >Start</button>
-    <button class="add-time"><i class="fa fa-clock-o"></i> +10</button>
-    <button class="hint">HINT</button>
-    <button class="reduse-target">WORD-- </button>
-    <button class="next">Next Level <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-    <button class="resualt-button">Resualt &#128079;<i class="fa fa-graduation-cap" aria-hidden="true"></i></button>
-    </section>
-
-    <button class="restart">Restart The Game <i class="fa fa-retweet" aria-hidden="true"></i></button>
-    
-    <aside class="resualt"></aside>
-</main>
-    
+            <ol><h3>Advance help:</h3>
+                <li>A hint is provided by 5 coins to the player (one word )</li>
+                <li>TIME++ : By spending one diamond, the player receives an additional 10 seconds</li>
+                <li>WORD-- : By spending 3 coins , the target word in the level will increase</li>
+            </ol>
+        </section>
+    <button >START THE GAME !</button>
+    </main>
 </body>
 </html>
-
