@@ -53,11 +53,12 @@ let targetTime = 120
 let t=targetTime
 let levelDiv = document.querySelector('.level')
 let finalLevel = 10
+let newTarget = targetCorrectWord
 
 //score + level 
 let coinsDiv =document.querySelector(".coins")
 let diamondDiv=document.querySelector(".diamond")
-let coins=0
+let coins=10
 let diamond=0
 diamondDiv.innerText=diamond
 coinsDiv.innerText=coins
@@ -119,6 +120,7 @@ const randomLetter = () => {
 const prepareNextLevel = () => {
     totaltargettWord+=targetCorrectWord
     targetCorrectWord+=1
+    newTarget = targetCorrectWord
         if (targetTime === 60 ){
         t=60
     }else {
@@ -378,6 +380,7 @@ const restatGame = () =>{
     level=1
     start=0 
     targetCorrectWord = 2
+     newTarget = targetCorrectWord
     targetTime = 120
     t=targetTime
     coins=0
@@ -453,7 +456,7 @@ const winnerResult = () => {
         correctWordArray.push("")
         coins-=5
         coinsDiv.innerText=coins
-        let newTarget = targetCorrectWord-1
+        newTarget--
         task.innerText=`Complate ${newTarget} words in ${targetTime} sec`
         if (correctWordArray.length === targetCorrectWord){
                 win=true

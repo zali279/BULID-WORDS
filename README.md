@@ -57,7 +57,9 @@
 
 ***
 ## Technologies Used 
-###
+### I used API for checking if word is correct english word or not 
+
+
 
 
 
