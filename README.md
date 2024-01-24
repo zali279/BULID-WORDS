@@ -57,12 +57,14 @@
 
 ***
 ## Technologies Used 
+### HTML + JS +CSS
 ### I used API for checking if word is correct english word or not 
 ### Also , I used API to generate word fron spicfic letters 
 
 ***
 ## Future Plane 
 ### I want to add by meaning hint (not a ward meaning of the word )
+### Instad of using API i wiill improve it by using database
 
 
 
