@@ -27,7 +27,7 @@ const nextLevelButton = document.querySelector('.next')
 const restartButton = document.querySelector('.restart')
 nextLevelButton.classList.toggle('hide')
 
-//help button (addtimer / hint word / hint meaning)
+//help button (addtimer / hint word / reduseTargetButton)
 const addTime= document.querySelector('.add-time')
 const hintButton = document.querySelector('.hint')
 const reduseTargetButton = document.querySelector('.reduse-target')
@@ -36,7 +36,6 @@ const reduseTargetButton = document.querySelector('.reduse-target')
 let hintWordArray = []
 let hintItration=1
 let finalHintWord
-const meaningfooter =document.querySelector(".meaning")
 
 //correct word 
 const correctWordList= document.querySelector("#correct")
@@ -51,10 +50,10 @@ const resualtSection = document.querySelector('.resualt')
 
 //design  game 
 let targetCorrectWord = 2
-let targetTime = 120
+let targetTime = 70
 let t=targetTime
 let levelDiv = document.querySelector('.level')
-let finalLevel = 10
+let finalLevel = 2
 let newTarget = targetCorrectWord
 
 //score + level 
@@ -128,16 +127,14 @@ const prepareNextLevel = () => {
     }else {
         targetTime-=10
         t= targetTime}
+    
     if (level < (finalLevel-1) ){
-       task.innerText=`Next level : Complate ${targetCorrectWord} words in ${targetTime} sec`
+        task.innerText=`Next level : Complate ${targetCorrectWord} words in ${targetTime} sec`
     }else if (level === finalLevel-1){
         task.innerText=`The Final  : Complate ${targetCorrectWord} words in ${targetTime} sec`
     }else if (level ==finalLevel) {
-        task.innerText=`GO TO THE RESULT :) `
-        
-
+        task.innerText=`GO TO THE RESULT 🎉 `
     }
-
 } 
 
 const nextLevel = () => {
@@ -171,7 +168,6 @@ const endLevel = () => {
         timer.innerText="time is up !  "
         task.innerText="Task not complated , play agin !"
         gameStatues.innerText="LOSER 😔"
-        gameStatues.textContent = String.fromCodePoint(128532);
     }
     else {
         timer.innerText="💔"
@@ -220,7 +216,6 @@ const correctWord = () => {
 }
 
 const  checkWord  = async () => { 
-    console.log(repateLetter)
     if (start && !end ){   
         word =input.innerText 
         wordLink = `${englishWordsLink}${word}`
@@ -247,7 +242,6 @@ const  checkWord  = async () => {
                             heartCounter--
                             let lastChild = heart.lastChild
                             heart.removeChild(lastChild) 
-                            //heart.innerText=heartCounter
                             if(wrongWordArray.length >= 5 ){
                             endLevel()
                             }
@@ -352,6 +346,8 @@ const doubleCheakHint = async () => {
                 })
 }
 
+
+
 const meaningHint = async () => {
     if (coins >= 5 && !end){
         for (let i=0; i<100;i++){
@@ -383,7 +379,7 @@ const restatGame = () =>{
     start=0 
     targetCorrectWord = 2
      newTarget = targetCorrectWord
-    targetTime = 120
+    targetTime = 70
     t=targetTime
     coins=0
     diamond=0
@@ -394,11 +390,9 @@ const restatGame = () =>{
         element.innerText = ""
     })
     initialize()
-    
 }
 
 const initialize = () => {
-
     levelDiv.innerText=level
     finalHintWord=false
     wrongWordCounter = 0
@@ -443,7 +437,6 @@ const winnerResult = () => {
         resualtSection.innerText="YOU ARE AT THE ELEMENTARY LEVEL ⭐⭐"
     }else {
         resualtSection.innerText="YOU ARE A Beginner ⭐"
-
     }
    }
 
@@ -480,3 +473,27 @@ hintButton.addEventListener('click',wordHint)
 reduseTargetButton.addEventListener('click',reduseTargerWord)
 resualtButton.addEventListener('click',winnerResult)
 
+
+//for future work
+/*
+const meaningHint = async () => {
+    if (coins >= 5 && !end){
+        for (let i=0; i<100;i++){
+            await wordHintSearch(i)
+            if (!correctWordArray.includes(finalHintWord) && finalHintWord){
+                wordLink = `${englishWordsLink}${hintWord}`
+                let responseData =  await axios.get(wordLink)
+                meaningfooter.innerText=responseData.data[0].meanings[0].definitions[0].definition
+                if (correctWordArray.length === targetCorrectWord){
+                    win=true
+                    end=true
+                    remainTime = t
+                    endLevel()
+                }
+                break ;
+            }
+        }
+    }
+
+}
+*/
