@@ -1,3 +1,5 @@
+// all emoji from w3schools
+
 ///////////GLOBEL VARIBLE ////////////////////////////////////////
 //API
 const englishWordsLink="https://api.dictionaryapi.dev/api/v2/entries/en/"
@@ -154,7 +156,7 @@ const endLevel = () => {
     if (win){
         timer.innerText="win !"
         nextLevelButton.classList.remove('hide')
-        gameStatues.innerText="winner"
+        gameStatues.innerText="winner 😁💪"
         if (remainTime >= targetTime/2){
             diamond++
             diamondDiv.innerText=diamond
@@ -166,15 +168,15 @@ const endLevel = () => {
         prepareNextLevel()
     } 
     else if (t <= 0) {
-        timer.innerText="time is up ! :( "
-        task.innerText="Task not complate , play agin !"
-        gameStatues.innerText="LOSER "
+        timer.innerText="time is up !  "
+        task.innerText="Task not complated , play agin !"
+        gameStatues.innerText="LOSER 😔"
         gameStatues.textContent = String.fromCodePoint(128532);
     }
     else {
         timer.innerText="💔"
-        task.innerText="you fininsh your Live :( !! "
-        gameStatues.innerText="play agin !"
+        task.innerText="you fininsh your Live 😔 !! "
+        gameStatues.innerText="play agin 🔃"
         }
 }
 
@@ -197,9 +199,9 @@ const timerCount = () => {
 
 const correctWord = () => {
     if (correctWordArray.includes(word)){
-        gameStatues.innerText="repate word"
+        gameStatues.innerText="repate word 🙄"
     }else {
-        gameStatues.innerText="correct word"
+        gameStatues.innerText="correct word 😎"
         correctWordArray.push(word)
         coins+=word.length
         coinsDiv.innerText=coins
@@ -228,10 +230,10 @@ const  checkWord  = async () => {
             }
         }
         if (word.length === 1) {
-                gameStatues.innerText='ITS A letter !!' 
+                gameStatues.innerText='ITS A letter 😒!!' 
             }
         else if (repateLetter === word.length-1){
-            gameStatues.innerText='YOU ARE JOKING :)'
+            gameStatues.innerText='YOU ARE JOKING 😉👊'
         }else {
             if (word.length > 1){
                 await fetch(wordLink)
@@ -239,7 +241,7 @@ const  checkWord  = async () => {
                     if (!response.ok) {
                         let wrongWord=input.innerText 
                         if (!wrongWordArray.includes(word)){
-                            gameStatues.innerText='ITS NOT A WORD !!'
+                            gameStatues.innerText='ITS NOT A WORD 😖!!'
                             wrongWordCounter++
                             wrongWordArray.push(wrongWord)
                             heartCounter--
@@ -250,7 +252,7 @@ const  checkWord  = async () => {
                             endLevel()
                             }
                         }else {
-                            gameStatues.innerText='ITS NOT A WORD , you try this before :))'
+                            gameStatues.innerText='ITS NOT A WORD , you try this before 😏'
                         }
                     }
                     else {
@@ -259,7 +261,7 @@ const  checkWord  = async () => {
                 })
                 
             }else {
-            gameStatues.innerText='ITS  empty !!'
+            gameStatues.innerText='ITS  empty 😣 !!'
             }
         }
     repateLetter=0}
@@ -308,7 +310,7 @@ const wordHint = async () => {
                 newh3.setAttribute('class','correctwords')
                 correctWordList.appendChild(newh3)
                 newh3.innerText=finalHintWord
-                gameStatues.innerText="Hint word"
+                gameStatues.innerText="Hint word 😯"
                 finalHintWord=false
                 if (correctWordArray.length === targetCorrectWord){
                     win=true
@@ -430,21 +432,16 @@ const winnerResult = () => {
     resualtSection.classList.remove("hide")
     task.innerText="THE RESUALT"
     if (coins > totaltargettWord *5 && (0.8*finalLevel < diamond < finalLevel)){
-        gameStatues.innerText="Profetional"
         resualtSection.innerText="YOU ARE A PROFESSIONAL ⭐⭐⭐⭐⭐"
         }
     else if (coins > totaltargettWord *5 && (0.5*finalLevel < diamond < 0.7*finalLevel)){
-        gameStatues.innerText="Expert"
         resualtSection.innerText="You ARE AN EXPERT  ⭐⭐⭐⭐"}
     else if ( coins > totaltargettWord*4 ){
-        gameStatues.innerText="Intermediate"
         resualtSection.innerText="YOU ARE AT THE INTERMEDIATE LEVEL ⭐⭐⭐"
     }
     else if (totaltargettWord*4 <= coins <= totaltargettWord*3 ){
-        gameStatues.innerText="Elementary"
         resualtSection.innerText="YOU ARE AT THE ELEMENTARY LEVEL ⭐⭐"
     }else {
-        gameStatues.innerText="Beginner"
         resualtSection.innerText="YOU ARE A Beginner ⭐"
 
     }
