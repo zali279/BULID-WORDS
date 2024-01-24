@@ -14,6 +14,14 @@
 
 ##### Game have #level , Throughout the levels, the player's time will decrease and the number of target words will increase. 
 
+#### Also in each level you will have (5 "heart / live" ) , So be carfull not to write wrong word 
+
+#### The main game page :
+
+
+<img src=mainGamePage.png  width=50%>
+
+
 ***
 ### Score: 
 
