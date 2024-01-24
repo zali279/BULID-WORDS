@@ -167,10 +167,11 @@ const endLevel = () => {
     else if (t <= 0) {
         timer.innerText="time is up ! :( "
         task.innerText="Task not complate , play agin !"
-        gameStatues.innerText="loser"
+        gameStatues.innerText="LOSER "
+        gameStatues.textContent = String.fromCodePoint(128532);
     }
     else {
-        timer.innerText="loser"
+        timer.innerText="💔"
         task.innerText="you fininsh your Live :( !! "
         gameStatues.innerText="play agin !"
         }

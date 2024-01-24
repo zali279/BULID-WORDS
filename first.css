@@ -1,22 +1,32 @@
-
+body {
+  background-image: url("letter.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 
 h1 {
     font-family: Cinzel, serif;
-    font-size: 36px;
+    font-size: 50px;
     font-weight: bold;
     color:#8F5476;
+    
+    padding-top: 0px;
     text-align: center;
 }
 
 main {
     align-items: center;
     text-align: center;
-    margin: 0 auto;
+     
     height: 530px;
     width: 900px;
-    border: 1.5px solid black;
+    border: 4px solid #f2f2f2;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-family: Verdana, sans-serif;
-    
+    margin-left: 530px;
 }
 
 
@@ -24,19 +34,20 @@ h2 {
     color :#D99F7E;
     padding: 20px;
     border-radius: 5px;
-    font-size: 35px;
+    font-size: 30px;
     text-align: center;
     margin: 0 auto;
    }
 
   h3 {
-    color:#F2D5C4
+    color:#F2D5C4;
+    font-size: 20px;
   }
 
   
    li {
     margin-right: 10px;
-    font-size: 20px;
+    font-size: 18px;
     color: #D95959;
   }
 
@@ -54,5 +65,9 @@ h2 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
     margin-top:10px ;
+    cursor: pointer;
   }
   
+section {
+  margin-top: -15px;
+}
