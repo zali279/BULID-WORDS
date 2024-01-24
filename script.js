@@ -449,8 +449,9 @@ const winnerResult = () => {
 
 
     const reduseTargerWord = () => {
+        if (coins >= 5  && !end){
         correctWordArray.push("")
-        coins-=4
+        coins-=5
         coinsDiv.innerText=coins
         let newTarget = targetCorrectWord-1
         task.innerText=`Complate ${newTarget} words in ${targetTime} sec`
@@ -459,7 +460,7 @@ const winnerResult = () => {
                 end=true
                 remainTime = t
                 endLevel()
-            }
+            }    }
     } 
 
 
