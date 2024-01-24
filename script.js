@@ -52,12 +52,12 @@ let targetCorrectWord = 2
 let targetTime = 120
 let t=targetTime
 let levelDiv = document.querySelector('.level')
-let finalLevel = 2
+let finalLevel = 10
 
 //score + level 
 let coinsDiv =document.querySelector(".coins")
 let diamondDiv=document.querySelector(".diamond")
-let coins=120
+let coins=0
 let diamond=0
 diamondDiv.innerText=diamond
 coinsDiv.innerText=coins

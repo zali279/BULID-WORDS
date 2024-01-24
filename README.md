@@ -5,7 +5,7 @@
 
 
 ***
-### *Description* 
+## *Description* 
 
 ### General :
 ##### The game generat random letters (6 lettter ), and player should build words form givin letters , to Go to next level (there are 10 levels)
@@ -44,7 +44,20 @@
 ##### (Beginner, Elementary,Intermediate,Expert,Profetional)
 <img src=resualt.png  width=60%> 
 
+***
+## HOW to start ?
+#### in main page you have the instraction ,by click in (START THE GAME) Button it will take you to The main game page .
+#### In the main game page you click on green button to start the game
+<img src=mainPage.png  width=49%> <img src=mainGamePage.png  width=49%> 
 
+## Game link 
+#### [BULID-WORD](https://build-words.surge.sh/)
+
+***
+
+***
+## Technologies Used 
+###
 
 
 
