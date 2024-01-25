@@ -355,34 +355,11 @@ const doubleCheakHint = async () => {
                         hintItration++
                         }
                     else {
-                        //word=hintWord
                         finalHintWord = hintWord
                     }
                 })
 }
 
-
-
-const meaningHint = async () => {
-    if (coins >= 5 && !end){
-        for (let i=0; i<100;i++){
-            await wordHintSearch(i)
-            if (!correctWordArray.includes(finalHintWord) && finalHintWord){
-                wordLink = `${englishWordsLink}${hintWord}`
-                let responseData =  await axios.get(wordLink)
-                meaningfooter.innerText=responseData.data[0].meanings[0].definitions[0].definition
-                if (correctWordArray.length === targetCorrectWord){
-                    win=true
-                    end=true
-                    remainTime = t
-                    endLevel()
-                }
-                break ;
-            }
-        }
-    }
-
-}
 
 const restatGame = () =>{
     clearInterval(time)
@@ -494,6 +471,27 @@ resualtButton.addEventListener('click',winnerResult)
 
 //for future work
 /*
+const meaningHint = async () => {
+    if (coins >= 5 && !end){
+        for (let i=0; i<100;i++){
+            await wordHintSearch(i)
+            if (!correctWordArray.includes(finalHintWord) && finalHintWord){
+                wordLink = `${englishWordsLink}${hintWord}`
+                let responseData =  await axios.get(wordLink)
+                meaningfooter.innerText=responseData.data[0].meanings[0].definitions[0].definition
+                if (correctWordArray.length === targetCorrectWord){
+                    win=true
+                    end=true
+                    remainTime = t
+                    endLevel()
+                }
+                break ;
+            }
+        }
+    }
+
+}
+
 const meaningHint = async () => {
     if (coins >= 5 && !end){
         for (let i=0; i<100;i++){
